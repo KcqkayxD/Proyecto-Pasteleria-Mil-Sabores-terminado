@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Producto | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body data-page="admin-producto-form">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>Panel Admin</h2>
+      <nav>
+        <a href="admin-home.html">🏠 Dashboard</a>
+        <a href="admin-productos.html">🍰 Productos</a>
+        <a href="admin-usuarios.html">👥 Usuarios</a>
+      </nav>
+      <button id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1 id="titulo-producto-form">Nuevo Producto</h1>
+      </header>
+
+      <section class="card">
+        <form id="form-admin-producto" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="prodCodigo">Código</label>
+              <input type="text" id="prodCodigo" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="prodNombre">Nombre</label>
+              <input type="text" id="prodNombre" maxlength="100" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field field-full">
+              <label for="prodDescripcion">Descripción</label>
+              <textarea id="prodDescripcion" maxlength="500" rows="4"></textarea>
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="prodPrecio">Precio</label>
+              <input type="number" id="prodPrecio" step="0.01" min="0" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="prodStock">Stock</label>
+              <input type="number" id="prodStock" step="1" min="0" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="prodStockCritico">Stock Crítico</label>
+              <input type="number" id="prodStockCritico" step="1" min="0" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="prodCategoria">Categoría</label>
+              <select id="prodCategoria"></select>
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="prodForma">Forma</label>
+              <select id="prodForma">
+                <option value="cuadrada">Cuadrada</option>
+                <option value="circular">Circular</option>
+                <option value="N/A">N/A</option>
+              </select>
+              <small class="error-message"></small>
+            </div>
+            <div class="field field-full">
+              <label for="prodImagen">URL Imagen</label>
+              <input type="url" id="prodImagen" />
+              <small class="error-message"></small>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar Producto</button>
+          <a href="admin-productos.html" class="btn btn-outline">Cancelar</a>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/productos.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+const REGIONES_COMUNAS = [
+  { region: "Región Metropolitana", comunas: ["Santiago", "Puente Alto", "Maipú"] },
+  { region: "Valparaíso", comunas: ["Valparaíso", "Viña del Mar", "Quilpué"] },
+  { region: "Biobío", comunas: ["Concepción", "Talcahuano", "Chillán"] },
+  { region: "Araucanía", comunas: ["Temuco", "Villarrica", "Angol"] },
+  { region: "Antofagasta", comunas: ["Antofagasta", "Calama", "Tocopilla"] }
+];
+
+function poblarRegiones(selectRegionId, selectComunaId) {
+  const regionSelect = document.getElementById(selectRegionId);
+  const comunaSelect = document.getElementById(selectComunaId);
+  if (!regionSelect || !comunaSelect) return;
+
+  regionSelect.innerHTML = '<option value="">Seleccione una región</option>';
+  REGIONES_COMUNAS.forEach(item => {
+    const opt = document.createElement("option");
+    opt.value = item.region;
+    opt.textContent = item.region;
+    regionSelect.appendChild(opt);
+  });
+
+  regionSelect.addEventListener("change", () => actualizarComunas(selectRegionId, selectComunaId));
+}
+
+function actualizarComunas(selectRegionId, selectComunaId, valorComuna = "") {
+  const regionSelect = document.getElementById(selectRegionId);
+  const comunaSelect = document.getElementById(selectComunaId);
+  if (!regionSelect || !comunaSelect) return;
+
+  const regionData = REGIONES_COMUNAS.find(r => r.region === regionSelect.value);
+  comunaSelect.innerHTML = '<option value="">Seleccione una comuna</option>';
+
+  if (regionData) {
+    regionData.comunas.forEach(comuna => {
+      const opt = document.createElement("option");
+      opt.value = comuna;
+      opt.textContent = comuna;
+      if (valorComuna === comuna) opt.selected = true;
+      comunaSelect.appendChild(opt);
+    });
+  }
+}
+
+window.REGIONES_COMUNAS = REGIONES_COMUNAS;
+window.poblarRegiones = poblarRegiones;
+window.actualizarComunas = actualizarComunas;

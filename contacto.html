@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="contacto">
+  <header class="navbar">
+    <div class="nav-brand"><a href="index.html" class="logo">Mil Sabores</a></div>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline">Ingresar</a>
+      <a href="carrito.html" class="cart-link">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section contact-layout">
+      <article class="card">
+        <h1>Contáctanos</h1>
+        <p>Estamos para ayudarte con tus celebraciones.</p>
+        <ul class="contact-list">
+          <li>📍 Av. Dulzura 1234, Santiago</li>
+          <li>📞 +56 2 2345 6789</li>
+          <li>✉️ contacto@milsabores.cl</li>
+          <li>🕒 Lun a Sáb 09:00 - 20:00</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Envíanos un mensaje</h2>
+        <form id="form-contacto" novalidate>
+          <div class="field">
+            <label for="contactoNombre">Nombre</label>
+            <input type="text" id="contactoNombre" maxlength="100" />
+            <small class="error-message"></small>
+          </div>
+          <div class="field">
+            <label for="contactoCorreo">Correo</label>
+            <input type="email" id="contactoCorreo" maxlength="100" />
+            <small class="hint">Dominios: @inacap.cl, @profesor.inacap.cl, @gmail.com</small>
+            <small class="error-message"></small>
+          </div>
+          <div class="field">
+            <label for="contactoComentario">Comentario</label>
+            <textarea id="contactoComentario" maxlength="500" rows="6"></textarea>
+            <small id="comentario-contador" class="hint">0 / 500</small>
+            <small class="error-message"></small>
+          </div>
+          <button class="btn btn-primary" type="submit">Enviar mensaje</button>
+        </form>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div>
+      <h3>Pastelería Mil Sabores</h3>
+      <p>Tradición chilena por más de 50 años.</p>
+    </div>
+    <div>
+      <h3>Enlaces</h3>
+      <ul class="footer-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="nosotros.html">Nosotros</a></li>
+        <li><a href="blogs.html">Blogs</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="registro.html">Registro</a></li>
+        <li><a href="carrito.html">Carrito</a></li>
+    </ul>
+    </div>
+    <div>
+      <h3>Redes</h3>
+      <p>Facebook | Instagram | WhatsApp</p>
+    </div>
+  </footer>
+
+  <script src="js/validaciones.js"></script>
+  <script src="js/carrito.js"></script>
+</body>
+</html>

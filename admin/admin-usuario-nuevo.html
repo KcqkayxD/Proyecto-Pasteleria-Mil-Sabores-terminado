@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Usuario | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body data-page="admin-usuario-form">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>Panel Admin</h2>
+      <nav>
+        <a href="admin-home.html">🏠 Dashboard</a>
+        <a href="admin-productos.html">🍰 Productos</a>
+        <a href="admin-usuarios.html">👥 Usuarios</a>
+      </nav>
+      <button id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1 id="titulo-usuario-form">Nuevo Usuario</h1>
+      </header>
+
+      <section class="card">
+        <form id="form-admin-usuario" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="userRun">RUN</label>
+              <input type="text" id="userRun" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userNombre">Nombre</label>
+              <input type="text" id="userNombre" maxlength="50" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userApellidos">Apellidos</label>
+              <input type="text" id="userApellidos" maxlength="100" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userCorreo">Correo</label>
+              <input type="email" id="userCorreo" maxlength="100" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userFechaNacimiento">Fecha Nacimiento</label>
+              <input type="date" id="userFechaNacimiento" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userTipo">Tipo Usuario</label>
+              <select id="userTipo">
+                <option value="">Seleccione</option>
+                <option value="Administrador">Administrador</option>
+                <option value="Vendedor">Vendedor</option>
+                <option value="Cliente">Cliente</option>
+              </select>
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userRegion">Región</label>
+              <select id="userRegion"></select>
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userComuna">Comuna</label>
+              <select id="userComuna"></select>
+              <small class="error-message"></small>
+            </div>
+            <div class="field field-full">
+              <label for="userDireccion">Dirección</label>
+              <input type="text" id="userDireccion" maxlength="300" />
+              <small class="error-message"></small>
+            </div>
+            <div class="field">
+              <label for="userPassword">Contraseña</label>
+              <input type="password" id="userPassword" minlength="4" maxlength="10" />
+              <small class="error-message"></small>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+          <a href="admin-usuarios.html" class="btn btn-outline">Cancelar</a>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/regiones-comunas.js"></script>
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/auth.js"></script>
+</body>
+</html>
