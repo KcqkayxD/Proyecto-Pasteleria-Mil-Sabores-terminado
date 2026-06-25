@@ -63,7 +63,7 @@ function initUsuariosSemilla() {
 
   const base = [
     {
-      run: "19011022K", nombre: "Ana", apellidos: "Admin", correo: "admin@gmail.com",
+      run: "162781642", nombre: "Jose", apellidos: "Admin", correo: "admin@gmail.com",
       fechaNacimiento: "1980-01-01", tipoUsuario: "Administrador", region: "Región Metropolitana",
       comuna: "Santiago", direccion: "Av. Central 123", password: "1234", codigoPromo: ""
     },
@@ -83,17 +83,22 @@ function initUsuariosSemilla() {
 
 function redirigirPorRol(user) {
   if (!user) return;
+  const enAdmin = location.pathname.includes("/admin/");
   if (user.tipoUsuario === "Administrador" || user.tipoUsuario === "Vendedor") {
-    location.href = "admin/admin-home.html".includes(location.pathname.split("/").pop()) ? "admin-home.html" : (location.pathname.includes("/admin/") ? "admin-home.html" : "admin/admin-home.html");
+    location.href = enAdmin ? "admin-home.html" : "admin/admin-home.html";
   } else {
-    location.href = location.pathname.includes("/admin/") ? "../index.html" : "index.html";
+    location.href = enAdmin ? "../index.html" : "index.html";
   }
 }
 
 function verificarAuth() {
   const user = getCurrentUser();
-  const enAdmin = location.pathname.includes("/admin/");
-  if (!enAdmin) return true;
+  const page = document.body?.dataset?.page || "";
+  const enAdminPath = location.pathname.includes("/admin/");
+  const esLoginAdmin = page === "admin-login" || /admin-login\.html$/i.test(location.pathname);
+  const esPaginaAdminProtegida = (enAdminPath || page.startsWith("admin-")) && !esLoginAdmin;
+
+  if (!esPaginaAdminProtegida) return true;
 
   if (!user) {
     location.href = "admin-login.html";
@@ -195,6 +200,7 @@ function manejarLoginAdmin() {
     }
 
     setCurrentUser(user);
+
     location.href = "admin-home.html";
   });
 }

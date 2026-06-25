@@ -156,8 +156,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 #form-admin-login input {
-  transition: border-color .15s ease, box-shadow .15s ease;
-  will-change: border-color, box-shadow;
+  transition: none;
+  will-change: auto;
 }
 
 .whatsapp-float {
@@ -238,14 +238,33 @@ input:focus, select:focus, textarea:focus {
   background: #fff2ea;
   border-top: 1px solid #f1d9cc;
   padding: 1rem;
+}
+.footer-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: .7rem;
+  gap: .9rem;
+  align-items: start;
 }
 .footer h3 { margin: 0 0 .4rem; }
 .footer ul { margin: 0; padding-left: 1rem; }
+.footer-copy {
+  margin-top: .8rem;
+  padding-top: .7rem;
+  border-top: 1px solid #f1d9cc;
+  text-align: center;
+  font-size: .92rem;
+}
 
-.auth-page { display: grid; place-items: center; min-height: 100vh; }
+.auth-page {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  opacity: 1;
+  transition: opacity .18s ease;
+}
+.auth-page.is-leaving {
+  opacity: 0;
+}
 .login-logo-wrap { text-align: center; margin-bottom: .8rem; }
 
 .admin-layout { display: flex; min-height: 100vh; }
@@ -294,30 +313,39 @@ input:focus, select:focus, textarea:focus {
   .filters-bar { grid-template-columns: 2fr 1fr 1fr; }
   .form-grid { grid-template-columns: repeat(2, 1fr); }
   .about-layout, .contact-layout, .cart-layout, .product-detail-wrap { grid-template-columns: 1fr 1fr; }
-  .footer { grid-template-columns: repeat(3, 1fr); }
+  .footer-content { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (min-width: 1024px) {
   .product-grid { grid-template-columns: repeat(4, 1fr); }
 }
-/* === FOOTER ENLACES VERTICALES === */
+/* === FOOTER ENLACES HORIZONTALES === */
 .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
 }
 
 .footer-links li {
-    margin-bottom: 8px;
+  margin: 0;
+}
+
+.footer-links li:not(:last-child)::after {
+  content: "|";
+  margin-left: .35rem;
+  color: var(--texto-sec);
 }
 
 .footer-links a {
-    text-decoration: none;
-    color: var(--chocolate);
-    display: block;
+  text-decoration: none;
+  color: var(--chocolate);
+  display: inline;
 }
 
 .footer-links a:hover {
-    color: var(--rosa);
-    text-decoration: underline;
+  color: var(--rosa);
+  text-decoration: underline;
 }

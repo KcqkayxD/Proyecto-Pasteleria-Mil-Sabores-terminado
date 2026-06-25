@@ -173,6 +173,7 @@ function setupRealtimeValidation(formId, validatorFn, fieldsSelectors = [], opti
     if (!field) return;
     if (validarEnInput) field.addEventListener("input", validatorFn);
     field.addEventListener("change", validatorFn);
+    if (!validarEnInput) field.addEventListener("blur", validatorFn);
   });
 
   form.addEventListener("submit", e => {
