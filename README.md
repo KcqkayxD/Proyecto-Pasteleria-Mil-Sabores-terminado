@@ -4,6 +4,10 @@
 
 - ✅ Sitio público y panel admin implementados.
 - ✅ Corrección aplicada al ingreso administrativo para evitar tiriteo/rebote de autenticación (`js/auth.js`).
+- ✅ Corrección de rutas de favicon en panel admin usando `../src/iconourl.png`.
+- ✅ Corrección de textos con codificación dañada (mojibake) en vistas admin.
+- ✅ Botón flotante de WhatsApp agregado y unificado (`💬`, `https://wa.me/56912345678`) en páginas públicas y administrativas.
+- ✅ Footer estandarizado según home en páginas del sitio.
 - ✅ Base de estilos y scripts principales operativos:
   - `css/styles.css`
   - `js/regiones-comunas.js`
@@ -11,6 +15,35 @@
   - `js/validaciones.js`
   - `js/auth.js`
   - `js/carrito.js`
+
+## Cambios recientes aplicados
+
+### 1) Login admin (estabilidad visual)
+- Ajustes para evitar tiriteo/parpadeo durante validación y flujo de autenticación.
+- Mantención del comportamiento esperado al iniciar/cerrar sesión.
+
+### 2) Rutas de recursos (assets)
+- Corrección de referencias de icono en páginas admin:
+  - `admin/admin-login.html`
+  - `admin/admin-home.html`
+  - `admin/admin-productos.html`
+  - `admin/admin-producto-nuevo.html`
+  - `admin/admin-usuarios.html`
+  - `admin/admin-usuario-nuevo.html`
+- Ruta objetivo aplicada: `../src/iconourl.png`.
+
+### 3) Corrección de codificación en admin
+- Normalización de textos con acentos y emojis en:
+  - `admin/admin-login.html`
+  - `admin/admin-productos.html`
+  - `admin/admin-producto-nuevo.html`
+  - `admin/admin-usuarios.html`
+  - `admin/admin-usuario-nuevo.html`
+- Ejemplos corregidos: `Pastelería`, `Gestión`, `sesión`, `Código`, `Categoría`, `Región`, `💬`, `🏠`, `🍰`, `👥`.
+
+### 4) UI global
+- Footer homologado con el diseño/referencia de `index.html`.
+- Botón flotante de WhatsApp visible y consistente en vistas públicas y admin.
 
 ## Estructura principal
 
@@ -36,5 +69,18 @@
 
 ## Notas de mantenimiento
 
-- Se eliminó `TODO.md` por requerimiento y el seguimiento queda centralizado en este `README.md`.
-- Si se requiere una validación integral final, se recomienda prueba visual y funcional completa de flujo público y admin.
+- `TODO.md` fue eliminado por requerimiento; el estado del proyecto queda centralizado en este `README.md`.
+- No se agregaron nuevas dependencias.
+- Si aparecen nuevamente caracteres dañados en Windows, verificar que los archivos se guarden en **UTF-8**.
+
+## Validación / pruebas recomendadas
+
+### Ruta crítica (rápida)
+1. `admin/admin-login.html`: textos correctos + sin tiriteo + botón WhatsApp visible.
+2. Login admin válido → `admin/admin-home.html`.
+3. Navegación admin: Home ↔ Productos ↔ Usuarios ↔ formularios de nuevo.
+4. Logout y retorno al flujo esperado.
+5. Revisión visual rápida en `index.html`, `login.html`, `productos.html`, `blogs.html`, `contacto.html`.
+
+### Prueba exhaustiva
+- Recorrer todas las páginas, secciones, enlaces, botones y formularios (público + admin), validando comportamiento esperado, estilos y ausencia de texto corrupto.
