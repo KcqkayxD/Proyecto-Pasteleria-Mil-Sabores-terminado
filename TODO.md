@@ -1,7 +1,0 @@
-- [x] Corregir tiriteo en ingreso administrativo
-- [x] Robustecer verificación de auth admin para evitar bucles de redirección
-- [x] Estandarizar footer global igual al home en todas las páginas públicas
-- [x] Estandarizar footer equivalente en páginas admin
-- [x] Agregar botón WhatsApp flotante en todas las páginas
-- [x] Mantener “Volver al home” en login
-- [ ] Ejecutar validación visual completa de todas las páginas
