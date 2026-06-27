@@ -121,12 +121,19 @@ function renderCarritoPagina() {
 function bindConfirmarPedido() {
   const btn = document.getElementById("btn-confirmar-pedido");
   if (!btn) return;
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
     const carrito = getCart();
-    if (!carrito.length) return alert("Tu carrito está vacío.");
-    alert("Pedido confirmado con éxito. ¡Gracias por preferir Pastelería Mil Sabores!");
-    localStorage.removeItem("carrito");
-    updateCartCount();
+    if (!carrito.length) {
+      e.preventDefault();
+      return alert("Tu carrito está vacío.");
+    }
+
+    const numeroPedido = String(Math.floor(1000 + Math.random() * 9000));
+    localStorage.setItem("ultimoPedidoNumero", numeroPedido);
+    localStorage.setItem("ultimoPedidoFecha", new Date().toISOString());
+    localStorage.setItem("ultimoPedidoDetalle", JSON.stringify(carrito));
+
+    saveCart([]);
     renderCarritoPagina();
   });
 }

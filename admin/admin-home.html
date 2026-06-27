@@ -18,6 +18,9 @@
         <a href="admin-home.html">🏠 Dashboard</a>
         <a href="admin-productos.html">🍰 Productos</a>
         <a href="admin-usuarios.html">👥 Usuarios</a>
+        <a href="admin-pedidos.html">📦 Pedidos</a>
+        <a href="admin-vendedor.html">👨‍💼 Vendedor</a>
+        <a href="admin-ventas-dia.html">💰 Ventas del día</a>
       </nav>
       <button id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
     </aside>
@@ -30,12 +33,22 @@
         <article class="card"><h3>Total Productos</h3><p id="kpi-productos">0</p></article>
         <article class="card"><h3>Total Usuarios</h3><p id="kpi-usuarios">0</p></article>
         <article class="card"><h3>Stock Crítico</h3><p id="kpi-critico">0</p></article>
+        <article class="card"><h3>Último pedido</h3><p id="kpi-ultimo-pedido">Sin pedidos</p></article>
       </section>
     </main>
   </div>
 
   <script src="../js/productos.js"></script>
   <script src="../js/auth.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const ultimoPedidoEl = document.getElementById("kpi-ultimo-pedido");
+      const numero = localStorage.getItem("ultimoPedidoNumero");
+      if (ultimoPedidoEl && numero) {
+        ultimoPedidoEl.textContent = `#${numero}`;
+      }
+    });
+  </script>
 
 
 

@@ -66,10 +66,42 @@
 - `admin/admin-producto-nuevo.html`
 - `admin/admin-usuarios.html`
 - `admin/admin-usuario-nuevo.html`
+- `admin/admin-pedidos.html`
+- `admin/admin-vendedor.html`
+- `admin/admin-ventas-dia.html`
+
+## Últimos cambios funcionales (pagos y pedidos)
+
+- Se agregó `pago.html` con confirmación de compra y visualización de número de pedido.
+- En `carrito.html`, el CTA principal cambió a **“Proceder al pago”** y redirige a `pago.html`.
+- `js/carrito.js` ahora genera y guarda en `localStorage`:
+  - `ultimoPedidoNumero`
+  - `ultimoPedidoFecha`
+- Se agregó en `admin/admin-home.html`:
+  - acceso a `📦 Pedidos`
+  - acceso a `👨‍💼 Vendedor`
+  - tarjeta de **Último pedido**
+- Se creó `admin/admin-pedidos.html` para listar pedidos y estado de pago (**Pagado**).
+- Se creó `admin/admin-vendedor.html` con permisos acotados:
+  - ver pedidos
+  - efectuar pedido (simulado), guardando número/fecha y estado pagado.
+- `admin/admin-pedidos.html` ahora incluye:
+  - columna **Detalle del pedido** leyendo `localStorage.ultimoPedidoDetalle` (fallback a `carrito`) con nombre y cantidad por torta,
+  - flujo de estados con botones (Preparar, Preparando, Listo para entregar, Entregado),
+  - **Anular pedido** (rojo) y **Borrar pedido** cuando corresponde,
+  - al marcar **Entregado** se bloquea anular/borrar, se registra en `localStorage.ventasDelDia` y redirige a **Ventas del día**.
+- Al proceder al pago:
+  - el carrito (`localStorage.carrito`) se vacía,
+  - pero el detalle del pedido se conserva en `localStorage.ultimoPedidoDetalle` para administración.
+- Se creó `admin/admin-ventas-dia.html` para visualizar pedidos entregados del día.
+- Se agregó enlace **💰 Ventas del día** en menús de:
+  - `admin/admin-home.html`
+  - `admin/admin-vendedor.html`
+  - `admin/admin-pedidos.html`
 
 ## Notas de mantenimiento
 
-- `TODO.md` fue eliminado por requerimiento; el estado del proyecto queda centralizado en este `README.md`.
+- Estado y checklist del proyecto centralizados en este `README.md`.
 - No se agregaron nuevas dependencias.
 - Si aparecen nuevamente caracteres dañados en Windows, verificar que los archivos se guarden en **UTF-8**.
 

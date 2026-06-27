@@ -60,6 +60,18 @@ a:hover { text-decoration: underline; }
 }
 .nav-links a { font-weight: 700; }
 
+.nav-toggle {
+  display: none;
+  border: 2px solid var(--chocolate);
+  background: transparent;
+  color: var(--chocolate);
+  border-radius: 8px;
+  padding: .35rem .55rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 .main-content { min-height: calc(100vh - 170px); padding: 1rem; }
 
 .hero { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--sombra); }
@@ -305,6 +317,40 @@ input:focus, select:focus, textarea:focus {
 }
 .badge-ok { background: #d4edda; color: #155724; }
 .badge-danger { background: #f8d7da; color: #721c24; }
+
+@media (max-width: 767px) {
+  .navbar {
+    position: relative;
+    align-items: center;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+  }
+
+  .nav-links,
+  .nav-actions {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .5rem;
+  }
+
+  .navbar.nav-open .nav-links,
+  .navbar.nav-open .nav-actions {
+    display: flex;
+  }
+
+  .nav-actions .btn,
+  .nav-actions .cart-link {
+    width: 100%;
+    text-align: left;
+  }
+}
 
 @media (min-width: 768px) {
   .main-content { padding: 1.2rem 2rem; }
