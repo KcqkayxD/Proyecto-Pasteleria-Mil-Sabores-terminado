@@ -159,7 +159,7 @@ function renderDetalleProducto() {
 
         <div class="field">
           <label for="mensajePersonalizado">Mensaje personalizado</label>
-          <input type="text" id="mensajePersonalizado" maxlength="120" placeholder="Ej: Feliz cumpleaños Ana" />
+          <input type="text" id="mensajePersonalizado" maxlength="120" placeholder="Ej: Feliz cumpleaños José" />
         </div>
 
         <button id="btn-add-detalle" class="btn btn-primary btn-lg">Añadir al carrito</button>
