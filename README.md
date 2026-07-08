@@ -1,6 +1,35 @@
 #https://github.com/KcqkayxD/Proyecto-Pasteleria-Mil-Sabores-terminado.git
 # Proyecto E-commerce Pastelería Mil Sabores
 
+## Versión React (`pasteleria-mil-sabores-react/`)
+
+Además del sitio HTML original (descrito más abajo), el proyecto incluye una versión completa en React (Vite + React Router + Bootstrap) dentro de la carpeta `pasteleria-mil-sabores-react/`.
+
+### Cómo ejecutarla
+```bash
+cd pasteleria-mil-sabores-react
+npm install
+npm run dev
+```
+
+### Usuarios de prueba
+- Administrador: `admin@gmail.com` / `1234`
+- Vendedor: `vendedor@gmail.com` / `1234`
+- Cliente: `cliente@gmail.com` / `1234`
+
+### Cambios aplicados
+- Se agregaron el logo, el favicon y la imagen de "Nosotros" (antes faltaban o se usaban imágenes genéricas).
+- Se reemplazaron las imágenes rotas de `via.placeholder.com` (servicio dado de baja en 2024) por `picsum.photos`, igual que en el sitio original.
+- Se corrigieron el footer y el navbar para usar los mismos colores/estructura del sitio HTML original: navbar blanco con links en chocolate, footer crema con enlaces horizontales separados por "|", botón de carrito 🛒 e ícono flotante de WhatsApp.
+- Se completó la lista oficial de comunas por región (Metropolitana, Valparaíso, Biobío, La Araucanía, Antofagasta) en `src/data/regionesData.js`.
+- Se agregó el campo **Hora de retiro** en el checkout, junto a un selector de fecha (`react-datepicker`, formato `dd/mm/yyyy` fijo), validación del horario de atención (Lunes a Sábado, 09:00–20:00) y de un mínimo de **24 horas** de anticipación para el retiro.
+- Se agregó la sección **Despacho** en el panel administrativo: lista automáticamente los pedidos en estado "Listo para entregar" para marcarlos como entregados.
+- Se agregó una columna de miniatura de imagen en la tabla de administración de productos.
+- Se corrigió un bug de caché: los datos de productos y usuarios en `localStorage` ahora se versionan (`STORAGE_VERSION`), así que las actualizaciones del catálogo/usuarios se aplican aunque el navegador tenga datos guardados de una versión anterior.
+- Se agregó `.gitignore` en la raíz del repositorio para excluir `node_modules/` y `dist/`.
+
+## Sitio HTML estático (raíz del repositorio)
+
 ## Estado actual
 
 - ✅ Sitio público y panel admin implementados.
