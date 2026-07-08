@@ -5,11 +5,29 @@
 
 Además del sitio HTML original (descrito más abajo), el proyecto incluye una versión completa en React (Vite + React Router + Bootstrap) dentro de la carpeta `pasteleria-mil-sabores-react/`.
 
-### Cómo ejecutarla
+### Cómo abrirla SIN instalar nada (para el profesor)
+Al descargar/descomprimir el repositorio, abre directamente con doble clic:
+```
+pasteleria-mil-sabores-react/dist/index.html
+```
+Es la build de producción ya compilada — funciona sola, sin `npm install` ni servidor, en cualquier navegador.
+
+### Cómo ejecutarla en modo desarrollo (para seguir programando)
 ```bash
 cd pasteleria-mil-sabores-react
 npm install
 npm run dev
+```
+
+### Cómo actualizar la build (`dist/`) después de hacer cambios
+Cada vez que se modifique el código, hay que regenerar `dist/` y volver a subirla a git, si no el profesor seguirá viendo la versión vieja al abrir el archivo directo:
+```bash
+cd pasteleria-mil-sabores-react
+npm run build
+cd ..
+git add pasteleria-mil-sabores-react/dist
+git commit -m "Nvo repositorio: actualiza build de produccion"
+git push
 ```
 
 ### Usuarios de prueba
@@ -26,7 +44,8 @@ npm run dev
 - Se agregó la sección **Despacho** en el panel administrativo: lista automáticamente los pedidos en estado "Listo para entregar" para marcarlos como entregados.
 - Se agregó una columna de miniatura de imagen en la tabla de administración de productos.
 - Se corrigió un bug de caché: los datos de productos y usuarios en `localStorage` ahora se versionan (`STORAGE_VERSION`), así que las actualizaciones del catálogo/usuarios se aplican aunque el navegador tenga datos guardados de una versión anterior.
-- Se agregó `.gitignore` en la raíz del repositorio para excluir `node_modules/` y `dist/`.
+- Se agregó `.gitignore` en la raíz del repositorio para excluir `node_modules/` (sí se sube `dist/`, es la build lista para abrir directo).
+- Se configuró la build para poder abrirse con doble clic desde una carpeta descomprimida, sin servidor: rutas relativas (`base: './'` en `vite.config.js`), enrutamiento por hash (`HashRouter` en vez de `BrowserRouter`) y todo el JS/CSS empaquetado en un solo archivo (`vite-plugin-singlefile`) para evitar el bloqueo de seguridad de los navegadores a los módulos JS cargados vía `file://`.
 
 ## Sitio HTML estático (raíz del repositorio)
 

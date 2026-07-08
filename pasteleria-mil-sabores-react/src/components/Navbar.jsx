@@ -20,7 +20,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-lg navbar-light ms-navbar sticky-top">
       <div className="container">
         <Link className="navbar-brand ms-logo d-flex align-items-center gap-2" to="/">
-          <img src="/logo.png" alt="Logo Pastelería Mil Sabores" height="36" />
+          <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Logo Pastelería Mil Sabores" height="36" />
           Pastelería Mil Sabores
         </Link>
 
