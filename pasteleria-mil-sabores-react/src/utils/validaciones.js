@@ -29,7 +29,6 @@ export function validarEmail(email = '') {
   const val = email.toLowerCase().trim();
   const dominiosPermitidos = [
     '@inacap.cl',
-    '@inacapmail.cl',
     '@profesor.inacap.cl',
     '@gmail.com',
   ];

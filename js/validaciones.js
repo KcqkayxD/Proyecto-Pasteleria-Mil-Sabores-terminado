@@ -51,11 +51,7 @@ function validarFormularioRegistro() {
   const apellidos = document.getElementById("apellidos");
   const correo = document.getElementById("correo");
   const fechaNacimiento = document.getElementById("fechaNacimiento");
-<<<<<<< HEAD
-  const region = document.getElementById("región");
-=======
   const region = document.getElementById("region");
->>>>>>> master
   const comuna = document.getElementById("comuna");
   const direccion = document.getElementById("direccion");
   const password = document.getElementById("password");
@@ -97,7 +93,7 @@ function validarFormularioRegistro() {
 function validarFormularioLogin(formAdmin = false) {
   const correo = document.getElementById(formAdmin ? "adminCorreo" : "loginCorreo");
   const pass = document.getElementById(formAdmin ? "adminPassword" : "loginPassword");
-  const dominios = formAdmin ? ["@inacap.cl", "@profesor.inacap.cl", "@gmail.com", "@inacapmail.cl"] : ["@inacap.cl", "@inacapmail.cl", "@gmail.com"];
+  const dominios = formAdmin ? ["@inacap.cl", "@profesor.inacap.cl", "@gmail.com"] : ["@inacap.cl", "@gmail.com"];
   let ok = true;
   ok &= setFieldState(correo, correoValido(correo.value, dominios), "Correo inválido o dominio no permitido.");
   ok &= setFieldState(pass, pass.value.length >= 4 && pass.value.length <= 10, "Contraseña entre 4 y 10 caracteres.");

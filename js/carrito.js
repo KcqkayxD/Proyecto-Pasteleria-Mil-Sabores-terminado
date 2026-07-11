@@ -61,11 +61,7 @@ function calcularDescuentos(subtotal) {
     mensajes.push("Descuento código FELICES50 aplicado (10%).");
   }
 
-<<<<<<< HEAD
-  if (user?.correo?.toLowerCase().endsWith("@Inacap.cl")) {
-=======
   if (user?.correo?.toLowerCase().endsWith("@inacap.cl")) {
->>>>>>> master
     mensajes.push("Beneficio especial: torta gratis en cumpleaños (flag activo).");
   }
 
@@ -122,8 +118,6 @@ function renderCarritoPagina() {
   beneficiosEl.textContent = mensajes.join(" ");
 }
 
-<<<<<<< HEAD
-=======
 function guardarPedido(carrito) {
   const subtotal = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
   const { descuento } = calcularDescuentos(subtotal);
@@ -153,7 +147,6 @@ function guardarPedido(carrito) {
   return pedido;
 }
 
->>>>>>> master
 function bindConfirmarPedido() {
   const btn = document.getElementById("btn-confirmar-pedido");
   if (!btn) return;
@@ -164,22 +157,12 @@ function bindConfirmarPedido() {
       return alert("Tu carrito está vacío.");
     }
 
-<<<<<<< HEAD
-    const numeroPedido = String(Math.floor(1000 + Math.random() * 9000));
-    localStorage.setItem("ultimoPedidoNumero", numeroPedido);
-    localStorage.setItem("ultimoPedidoFecha", new Date().toISOString());
-    localStorage.setItem("ultimoPedidoDetalle", JSON.stringify(carrito));
-
-=======
     guardarPedido(carrito);
->>>>>>> master
     saveCart([]);
     renderCarritoPagina();
   });
 }
 
-<<<<<<< HEAD
-=======
 function actualizarNavSesion() {
   const user = JSON.parse(localStorage.getItem("currentUser") || "null");
   if (!user) return;
@@ -204,15 +187,11 @@ function actualizarNavSesion() {
   });
 }
 
->>>>>>> master
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   renderCarritoPagina();
   bindConfirmarPedido();
-<<<<<<< HEAD
-=======
   actualizarNavSesion();
->>>>>>> master
 
   const formContacto = document.getElementById("form-contacto");
   if (formContacto) {
