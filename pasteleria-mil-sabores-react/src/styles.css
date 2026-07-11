@@ -17,8 +17,6 @@ body {
   color: var(--texto);
 }
 
-<<<<<<< HEAD
-=======
 a {
   color: var(--chocolate);
 }
@@ -35,7 +33,6 @@ a:hover {
   color: var(--rosa) !important;
 }
 
->>>>>>> master
 h1, h2, h3, .brand-logo {
   font-family: 'Pacifico', cursive;
   color: var(--chocolate);

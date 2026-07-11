@@ -1,17 +1,5 @@
 import { useState } from 'react';
 import { getCategorias } from '../../data/categoriasData';
-<<<<<<< HEAD
-import { getProductosByCategoria } from '../../data/productosData';
-import ProductCard from '../../components/ProductCard';
-import useCart from '../../hooks/useCart';
-
-export default function Categorias() {
-  const { agregarProducto } = useCart();
-  const categorias = getCategorias();
-  const [seleccionada, setSeleccionada] = useState(categorias[0] || '');
-
-  const productos = seleccionada ? getProductosByCategoria(seleccionada) : [];
-=======
 import { getProductos, getProductosByCategoria } from '../../data/productosData';
 import ProductCard from '../../components/ProductCard';
 import useCart from '../../hooks/useCart';
@@ -24,7 +12,6 @@ export default function Categorias() {
   const [seleccionada, setSeleccionada] = useState(TODAS);
 
   const productos = seleccionada === TODAS ? getProductos() : getProductosByCategoria(seleccionada);
->>>>>>> master
 
   const handleAgregar = (producto) => {
     agregarProducto(producto, 1, '');
@@ -36,8 +23,6 @@ export default function Categorias() {
       <h1 className="mb-4">Categorías</h1>
 
       <div className="d-flex flex-wrap gap-2 mb-4">
-<<<<<<< HEAD
-=======
         <button
           type="button"
           className={`btn btn-sm ${seleccionada === TODAS ? 'btn-primary' : 'btn-outline-secondary'}`}
@@ -45,7 +30,6 @@ export default function Categorias() {
         >
           {TODAS}
         </button>
->>>>>>> master
         {categorias.map((cat) => (
           <button
             key={cat}

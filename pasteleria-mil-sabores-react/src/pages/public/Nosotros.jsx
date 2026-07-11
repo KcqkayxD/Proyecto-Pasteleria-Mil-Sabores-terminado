@@ -4,11 +4,7 @@ export default function Nosotros() {
       <section className="row align-items-center g-4 mb-5">
         <div className="col-md-5">
           <img
-<<<<<<< HEAD
-            src={`${import.meta.env.BASE_URL}nosotros.png`}
-=======
             src="/nosotros.png"
->>>>>>> master
             alt="Historia Pastelería Mil Sabores"
             className="img-fluid rounded-4"
           />

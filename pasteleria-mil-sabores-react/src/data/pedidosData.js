@@ -17,8 +17,6 @@ export function getPedidoById(numero) {
   return getPedidos().find((p) => p.numero === numero) || null;
 }
 
-<<<<<<< HEAD
-=======
 export function getPedidosPorCorreo(correo) {
   if (!correo) return [];
   return getPedidos()
@@ -26,7 +24,6 @@ export function getPedidosPorCorreo(correo) {
     .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
 }
 
->>>>>>> master
 export function crearPedido({ items, total, cliente }) {
   const pedidos = getPedidos();
   const numero = String(Math.floor(1000 + Math.random() * 9000));
