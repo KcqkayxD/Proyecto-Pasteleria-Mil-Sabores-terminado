@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrito | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="icon" type="image/png" href="src/iconourl.png" />
+</head>
+<body data-page="carrito">
+  <header class="navbar">
+    <div class="nav-brand">
+      <a href="index.html" class="logo">
+        <img src="src/logo.png" alt="Logo Pastelería Mil Sabores" class="logo-img" />
+        <span>Mil Sabores</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Inicio</a>
+      <a href="productos.html">Productos</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="blogs.html">Blogs</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline">Ingresar</a>
+      <a href="registro.html" class="btn btn-primary">Registro</a>
+      <a href="carrito.html" class="cart-link">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="section cart-layout">
+      <article class="card">
+        <h1>Tu Carrito</h1>
+        <div id="carrito-items"></div>
+        <p id="carrito-vacio" class="hidden">Tu carrito está vacío. <a href="productos.html">Ir a comprar</a></p>
+      </article>
+
+      <aside class="card">
+        <h2>Resumen</h2>
+        <div class="summary-line"><span>Subtotal:</span><strong id="resumen-subtotal">$0</strong></div>
+        <div class="summary-line"><span>Descuento:</span><strong id="resumen-descuento">$0</strong></div>
+        <div class="summary-line total"><span>Total:</span><strong id="resumen-total">$0</strong></div>
+        <p id="beneficios-usuario" class="hint"></p>
+        <a href="pago.html" id="btn-confirmar-pedido" class="btn btn-primary btn-block">Proceder al pago</a>
+        <a href="productos.html" class="btn btn-outline btn-block">Seguir comprando</a>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div>
+        <h3>Pastelería Mil Sabores</h3>
+        <p>Tradición chilena por más de 50 años.</p>
+      </div>
+      <div>
+        <h3>Enlaces</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
+          <li><a href="blogs.html">Blogs</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="registro.html">Registro</a></li>
+          <li><a href="carrito.html">Carrito</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Redes</h3>
+        <p>
+          <a href="https://www.facebook.com/1000sabores" target="_blank" rel="noopener">Facebook</a> |
+          <a href="https://www.instagram.com/1000sabores/" target="_blank" rel="noopener">Instagram</a> |
+          <a href="https://wa.me/56912345678" target="_blank" rel="noopener">WhatsApp</a>
+        </p>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Pastelería Mil Sabores — Creado por KcQDesing</p>
+  </footer>
+
+  <script src="js/auth.js"></script>
+  <script src="js/carrito.js"></script>
+
+
+
+
+  <a class="whatsapp-float" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+</body>
+</html>

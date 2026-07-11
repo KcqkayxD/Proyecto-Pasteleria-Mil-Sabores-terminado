@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Vendedor | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" href="../src/iconourl.png" />
+</head>
+<body data-page="admin-vendedor">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>Panel Vendedor</h2>
+      <nav>
+        <a href="admin-vendedor.html">👨‍💼 Vendedor</a>
+        <a href="admin-pedidos.html">📦 Pedidos</a>
+        <a href="admin-ventas-dia.html">💰 Ventas del día</a>
+      </nav>
+      <button id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Vendedor</h1>
+      </header>
+
+      <section class="card">
+        <h3>Pedidos</h3>
+        <p>Permisos: ver pedidos y efectuar pedidos.</p>
+        <button id="btn-efectuar-pedido" class="btn btn-primary">Efectuar pedido</button>
+      </section>
+
+      <section class="card" style="margin-top: 1rem;">
+        <h3>Último pedido generado</h3>
+        <p id="vendedor-ultimo-pedido">Sin pedidos</p>
+        <p id="vendedor-estado-pago">Estado: -</p>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    function actualizarVistaPedido() {
+      const numero = localStorage.getItem("ultimoPedidoNumero");
+      const fecha = localStorage.getItem("ultimoPedidoFecha");
+      const pedidoEl = document.getElementById("vendedor-ultimo-pedido");
+      const estadoEl = document.getElementById("vendedor-estado-pago");
+
+      if (!pedidoEl || !estadoEl) return;
+
+      if (!numero) {
+        pedidoEl.textContent = "Sin pedidos";
+        estadoEl.textContent = "Estado: -";
+        return;
+      }
+
+      const fechaTexto = fecha ? new Date(fecha).toLocaleString("es-CL") : "-";
+      pedidoEl.textContent = `Pedido #${numero} (${fechaTexto})`;
+      estadoEl.textContent = "Estado: Pagado";
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const btn = document.getElementById("btn-efectuar-pedido");
+
+      actualizarVistaPedido();
+
+      if (btn) {
+        btn.addEventListener("click", () => {
+          const numeroPedido = String(Math.floor(1000 + Math.random() * 9000));
+          localStorage.setItem("ultimoPedidoNumero", numeroPedido);
+          localStorage.setItem("ultimoPedidoFecha", new Date().toISOString());
+          alert(`Pedido #${numeroPedido} efectuado correctamente.`);
+          actualizarVistaPedido();
+        });
+      }
+    });
+  </script>
+  <a class="whatsapp-float" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+</body>
+</html>

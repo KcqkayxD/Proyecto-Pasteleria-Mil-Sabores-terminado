@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" href="../src/iconourl.png" />
+</head>
+<body data-page="admin-login">
+  <main class="main-content auth-page">
+    <section class="form-section">
+      <div class="card form-card login-card">
+        <h1>Ingreso Administrativo</h1>
+        <form id="form-admin-login" novalidate>
+          <div class="field">
+            <label for="adminCorreo">Correo</label>
+            <input type="email" id="adminCorreo" maxlength="100" />
+            <small class="error-message"></small>
+          </div>
+          <div class="field">
+            <label for="adminPassword">Contraseña</label>
+            <input type="password" id="adminPassword" minlength="4" maxlength="10" />
+            <small class="error-message"></small>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+          <p class="text-center"><a href="../index.html">Volver al sitio público</a></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="../js/validaciones.js"></script>
+  <script src="../js/auth.js"></script>
+
+
+
+
+  <a class="whatsapp-float" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+</body>
+</html>
+

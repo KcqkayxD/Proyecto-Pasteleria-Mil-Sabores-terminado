@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Pedidos | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" href="../src/iconourl.png" />
+</head>
+<body data-page="admin-pedidos">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>Panel Admin</h2>
+      <nav>
+        <a href="admin-home.html">🏠 Dashboard</a>
+        <a href="admin-productos.html">🍰 Productos</a>
+        <a href="admin-usuarios.html">👥 Usuarios</a>
+        <a href="admin-pedidos.html">📦 Pedidos</a>
+        <a href="admin-vendedor.html">👨‍💼 Vendedor</a>
+        <a href="admin-ventas-dia.html">💰 Ventas del día</a>
+      </nav>
+      <button id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Pedidos</h1>
+      </header>
+
+      <section class="card">
+        <h3>Pedidos a realizar</h3>
+        <div id="pedidos-contenido">
+          <p>No hay pedidos registrados.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    function formatoFecha(iso) {
+      if (!iso) return "-";
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return "-";
+      return d.toLocaleString("es-CL");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const cont = document.getElementById("pedidos-contenido");
+      const numero = localStorage.getItem("ultimoPedidoNumero");
+      const fecha = localStorage.getItem("ultimoPedidoFecha");
+
+      if (!cont) return;
+
+      if (!numero) {
+        cont.innerHTML = "<p>No hay pedidos registrados.</p>";
+        return;
+      }
+
+      const estadoGuardado = localStorage.getItem("ultimoPedidoEstado") || "Pagado";
+      const colorEstado = estadoGuardado === "Anulado" ? "#b91c1c" : "#111827";
+      const mostrarBorrar = estadoGuardado === "Anulado";
+      const bloqueadoPorEntregado = estadoGuardado === "Entregado";
+
+      let detallePedido = "Sin detalle";
+      try {
+        const detalleRaw = localStorage.getItem("ultimoPedidoDetalle");
+        const detalleGuardado = detalleRaw ? JSON.parse(detalleRaw) : null;
+        const carritoRaw = localStorage.getItem("carrito");
+        const carrito = carritoRaw ? JSON.parse(carritoRaw) : [];
+        const origenDetalle = Array.isArray(detalleGuardado) && detalleGuardado.length > 0
+          ? detalleGuardado
+          : carrito;
+
+        if (Array.isArray(origenDetalle) && origenDetalle.length > 0) {
+          detallePedido = origenDetalle
+            .map((item) => `${item.nombre || "Producto"} x${item.cantidad || 1}`)
+            .join(", ");
+        }
+      } catch (e) {
+        detallePedido = "Sin detalle";
+      }
+
+      cont.innerHTML = `
+        <style>
+          .acciones-pedido {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+          }
+          .btn-estado {
+            border: none;
+            border-radius: 8px;
+            padding: 0.45rem 0.7rem;
+            cursor: pointer;
+            background: #e5e7eb;
+            color: #111827;
+            font-weight: 700;
+          }
+          .btn-estado:hover {
+            filter: brightness(0.95);
+          }
+          .bloque-anular {
+            margin-top: 1rem;
+            padding-top: 0.8rem;
+            border-top: 1px dashed #d1d5db;
+            display: flex;
+            justify-content: flex-end;
+          }
+          .btn-anular {
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            background: #dc2626;
+            color: #ffffff;
+            font-weight: 800;
+          }
+          .btn-anular:hover {
+            background: #b91c1c;
+          }
+          .btn-borrar {
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            background: #111827;
+            color: #ffffff;
+            font-weight: 800;
+            margin-left: 0.5rem;
+          }
+          .btn-borrar:hover {
+            background: #000000;
+          }
+        </style>
+
+        <table class="tabla-admin">
+          <thead>
+            <tr>
+              <th>N° Pedido</th>
+              <th>Fecha</th>
+              <th>Detalle del pedido</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>#${numero}</td>
+              <td>${formatoFecha(fecha)}</td>
+              <td>${detallePedido}</td>
+              <td><strong id="estado-pedido" style="color:${colorEstado}">${estadoGuardado}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="acciones-pedido">
+          <button type="button" class="btn-estado" data-estado="Preparar">Preparar</button>
+          <button type="button" class="btn-estado" data-estado="Preparando">Preparando</button>
+          <button type="button" class="btn-estado" data-estado="Listo para entregar">Listo para entregar</button>
+          <button type="button" class="btn-estado" data-estado="Entregado">Entregado</button>
+        </div>
+
+        ${bloqueadoPorEntregado ? "" : `
+        <div class="bloque-anular">
+          <button type="button" class="btn-anular" data-estado="Anulado">Anular pedido</button>
+          ${mostrarBorrar ? '<button type="button" class="btn-borrar" id="btn-borrar-pedido">Borrar pedido</button>' : ""}
+        </div>
+        `}
+      `;
+
+      const estadoEl = document.getElementById("estado-pedido");
+      const botonesEstado = cont.querySelectorAll("[data-estado]");
+      const btnBorrar = document.getElementById("btn-borrar-pedido");
+
+      botonesEstado.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const nuevoEstado = btn.getAttribute("data-estado") || "Pagado";
+          localStorage.setItem("ultimoPedidoEstado", nuevoEstado);
+          if (estadoEl) {
+            estadoEl.textContent = nuevoEstado;
+            estadoEl.style.color = nuevoEstado === "Anulado" ? "#b91c1c" : "#111827";
+          }
+
+          if (nuevoEstado === "Entregado") {
+            const ventasRaw = localStorage.getItem("ventasDelDia");
+            const ventas = ventasRaw ? JSON.parse(ventasRaw) : [];
+            const yaExiste = Array.isArray(ventas) && ventas.some((v) => String(v.numero) === String(numero));
+            if (!yaExiste) {
+              ventas.push({
+                numero,
+                fecha,
+                detalle: detallePedido,
+                estado: "Entregado"
+              });
+              localStorage.setItem("ventasDelDia", JSON.stringify(ventas));
+            }
+            window.location.href = "admin-ventas-dia.html";
+            return;
+          }
+
+          if (nuevoEstado === "Anulado" && !document.getElementById("btn-borrar-pedido")) {
+            const bloqueAnular = cont.querySelector(".bloque-anular");
+            if (bloqueAnular) {
+              const nuevoBtn = document.createElement("button");
+              nuevoBtn.type = "button";
+              nuevoBtn.id = "btn-borrar-pedido";
+              nuevoBtn.className = "btn-borrar";
+              nuevoBtn.textContent = "Borrar pedido";
+              bloqueAnular.appendChild(nuevoBtn);
+
+              nuevoBtn.addEventListener("click", () => {
+                localStorage.removeItem("ultimoPedidoNumero");
+                localStorage.removeItem("ultimoPedidoFecha");
+                localStorage.removeItem("ultimoPedidoEstado");
+                cont.innerHTML = "<p>No hay pedidos registrados.</p>";
+              });
+            }
+          }
+        });
+      });
+
+      if (btnBorrar) {
+        btnBorrar.addEventListener("click", () => {
+          localStorage.removeItem("ultimoPedidoNumero");
+          localStorage.removeItem("ultimoPedidoFecha");
+          localStorage.removeItem("ultimoPedidoEstado");
+          cont.innerHTML = "<p>No hay pedidos registrados.</p>";
+        });
+      }
+    });
+  </script>
+  <a class="whatsapp-float" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+</body>
+</html>

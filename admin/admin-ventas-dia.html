@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ventas del día | Pastelería Mil Sabores</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="icon" type="image/png" href="../src/iconourl.png" />
+</head>
+<body data-page="admin-ventas-dia">
+  <div class="admin-layout">
+    <aside class="admin-sidebar">
+      <h2>Panel Admin</h2>
+      <nav>
+        <a href="admin-home.html">🏠 Dashboard</a>
+        <a href="admin-productos.html">🍰 Productos</a>
+        <a href="admin-usuarios.html">👥 Usuarios</a>
+        <a href="admin-pedidos.html">📦 Pedidos</a>
+        <a href="admin-vendedor.html">👨‍💼 Vendedor</a>
+        <a href="admin-ventas-dia.html">💰 Ventas del día</a>
+      </nav>
+      <button id="btn-logout" class="btn btn-outline btn-block">Cerrar sesión</button>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-header">
+        <h1>Ventas del día</h1>
+      </header>
+
+      <section class="card">
+        <h3>Pedidos entregados</h3>
+        <div id="ventas-contenido">
+          <p>No hay ventas registradas hoy.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script>
+    function formatoFecha(iso) {
+      if (!iso) return "-";
+      const d = new Date(iso);
+      if (Number.isNaN(d.getTime())) return "-";
+      return d.toLocaleString("es-CL");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const cont = document.getElementById("ventas-contenido");
+      if (!cont) return;
+
+      let ventas = [];
+      try {
+        const ventasRaw = localStorage.getItem("ventasDelDia");
+        ventas = ventasRaw ? JSON.parse(ventasRaw) : [];
+      } catch (e) {
+        ventas = [];
+      }
+
+      if (!Array.isArray(ventas) || ventas.length === 0) {
+        cont.innerHTML = "<p>No hay ventas registradas hoy.</p>";
+        return;
+      }
+
+      const filas = ventas.map((v) => `
+        <tr>
+          <td>#${v.numero || "-"}</td>
+          <td>${formatoFecha(v.fecha)}</td>
+          <td>${v.detalle || "Sin detalle"}</td>
+          <td>${v.estado || "Entregado"}</td>
+        </tr>
+      `).join("");
+
+      cont.innerHTML = `
+        <table class="tabla-admin">
+          <thead>
+            <tr>
+              <th>N° Pedido</th>
+              <th>Fecha</th>
+              <th>Detalle</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${filas}
+          </tbody>
+        </table>
+      `;
+    });
+  </script>
+  <a class="whatsapp-float" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+</body>
+</html>
