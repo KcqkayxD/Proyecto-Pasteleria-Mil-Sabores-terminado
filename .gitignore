@@ -1,4 +1,8 @@
 node_modules/
+<<<<<<< HEAD
+=======
+dist/
+>>>>>>> master
 .env
 .env.local
 *.log

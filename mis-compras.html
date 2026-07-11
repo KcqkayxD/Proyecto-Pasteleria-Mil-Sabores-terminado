@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contacto | Pastelería Mil Sabores</title>
+  <title>Mis Compras | Pastelería Mil Sabores</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="icon" type="image/png" href="src/iconourl.png" />
 </head>
-<body data-page="contacto">
+<body data-page="mis-compras">
   <header class="navbar">
     <div class="nav-brand">
       <a href="index.html" class="logo">
@@ -33,41 +33,11 @@
   </header>
 
   <main class="main-content">
-    <section class="section contact-layout">
-      <article class="card">
-        <h1>Contáctanos</h1>
-        <p>Estamos para ayudarte con tus celebraciones.</p>
-        <ul class="contact-list">
-          <li>📍 Av. Dulzura 1234, Santiago</li>
-          <li>📞 +56 2 2345 6789</li>
-          <li>✉️ contacto@milsabores.cl</li>
-          <li>🕒 Lun a Sáb 09:00 - 20:00</li>
-        </ul>
-      </article>
-
-      <article class="card">
-        <h2>Envíanos un mensaje</h2>
-        <form id="form-contacto" novalidate>
-          <div class="field">
-            <label for="contactoNombre">Nombre</label>
-            <input type="text" id="contactoNombre" maxlength="100" />
-            <small class="error-message"></small>
-          </div>
-          <div class="field">
-            <label for="contactoCorreo">Correo</label>
-            <input type="email" id="contactoCorreo" maxlength="100" />
-            <small class="hint">Dominios: @inacap.cl, @profesor.inacap.cl, @gmail.com</small>
-            <small class="error-message"></small>
-          </div>
-          <div class="field">
-            <label for="contactoComentario">Comentario</label>
-            <textarea id="contactoComentario" maxlength="500" rows="6"></textarea>
-            <small id="comentario-contador" class="hint">0 / 500</small>
-            <small class="error-message"></small>
-          </div>
-          <button class="btn btn-primary" type="submit">Enviar mensaje</button>
-        </form>
-      </article>
+    <section class="section">
+      <h1>Mis Compras</h1>
+      <p class="hint">Revisa tus pedidos anteriores y vuelve a comprar con un clic.</p>
+      <div id="mis-compras-lista"></div>
+      <p id="mis-compras-vacio" class="hidden">Todavía no tienes pedidos. <a href="productos.html">Ir a comprar</a></p>
     </section>
   </main>
 
@@ -95,27 +65,17 @@
         <p>
           <a href="https://www.facebook.com/1000sabores" target="_blank" rel="noopener">Facebook</a> |
           <a href="https://www.instagram.com/1000sabores/" target="_blank" rel="noopener">Instagram</a> |
-<<<<<<< HEAD
-          <a href="https://wa.me/56955198638" target="_blank" rel="noopener">WhatsApp</a>
-=======
           <a href="https://wa.me/56912345678" target="_blank" rel="noopener">WhatsApp</a>
->>>>>>> master
         </p>
       </div>
     </div>
     <p class="footer-copy">© 2026 Pastelería Mil Sabores — Creado por KcQDesing</p>
   </footer>
 
-  <script src="js/validaciones.js"></script>
+  <script src="js/productos.js"></script>
+  <script src="js/auth.js"></script>
   <script src="js/carrito.js"></script>
-
-
-
-
-<<<<<<< HEAD
-  <a class="whatsapp-float" href="https://wa.me/56955198638" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
-=======
+  <script src="js/pedidos.js"></script>
   <a class="whatsapp-float" href="https://wa.me/56912345678" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
->>>>>>> master
 </body>
 </html>

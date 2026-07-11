@@ -51,7 +51,11 @@ function validarFormularioRegistro() {
   const apellidos = document.getElementById("apellidos");
   const correo = document.getElementById("correo");
   const fechaNacimiento = document.getElementById("fechaNacimiento");
+<<<<<<< HEAD
   const region = document.getElementById("región");
+=======
+  const region = document.getElementById("region");
+>>>>>>> master
   const comuna = document.getElementById("comuna");
   const direccion = document.getElementById("direccion");
   const password = document.getElementById("password");

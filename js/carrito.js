@@ -61,7 +61,11 @@ function calcularDescuentos(subtotal) {
     mensajes.push("Descuento código FELICES50 aplicado (10%).");
   }
 
+<<<<<<< HEAD
   if (user?.correo?.toLowerCase().endsWith("@Inacap.cl")) {
+=======
+  if (user?.correo?.toLowerCase().endsWith("@inacap.cl")) {
+>>>>>>> master
     mensajes.push("Beneficio especial: torta gratis en cumpleaños (flag activo).");
   }
 
@@ -118,6 +122,38 @@ function renderCarritoPagina() {
   beneficiosEl.textContent = mensajes.join(" ");
 }
 
+<<<<<<< HEAD
+=======
+function guardarPedido(carrito) {
+  const subtotal = carrito.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  const { descuento } = calcularDescuentos(subtotal);
+  const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+  const numeroPedido = String(Math.floor(1000 + Math.random() * 9000));
+
+  const pedido = {
+    numero: numeroPedido,
+    fecha: new Date().toISOString(),
+    correo: user?.correo || null,
+    cliente: user ? `${user.nombre} ${user.apellidos}` : "Invitado",
+    items: carrito,
+    subtotal,
+    descuento,
+    total: subtotal - descuento,
+    estado: "Confirmado"
+  };
+
+  const pedidos = JSON.parse(localStorage.getItem("pedidos") || "[]");
+  pedidos.push(pedido);
+  localStorage.setItem("pedidos", JSON.stringify(pedidos));
+
+  localStorage.setItem("ultimoPedidoNumero", pedido.numero);
+  localStorage.setItem("ultimoPedidoFecha", pedido.fecha);
+  localStorage.setItem("ultimoPedidoDetalle", JSON.stringify(carrito));
+
+  return pedido;
+}
+
+>>>>>>> master
 function bindConfirmarPedido() {
   const btn = document.getElementById("btn-confirmar-pedido");
   if (!btn) return;
@@ -128,20 +164,55 @@ function bindConfirmarPedido() {
       return alert("Tu carrito está vacío.");
     }
 
+<<<<<<< HEAD
     const numeroPedido = String(Math.floor(1000 + Math.random() * 9000));
     localStorage.setItem("ultimoPedidoNumero", numeroPedido);
     localStorage.setItem("ultimoPedidoFecha", new Date().toISOString());
     localStorage.setItem("ultimoPedidoDetalle", JSON.stringify(carrito));
 
+=======
+    guardarPedido(carrito);
+>>>>>>> master
     saveCart([]);
     renderCarritoPagina();
   });
 }
 
+<<<<<<< HEAD
+=======
+function actualizarNavSesion() {
+  const user = JSON.parse(localStorage.getItem("currentUser") || "null");
+  if (!user) return;
+
+  document.querySelectorAll(".nav-actions").forEach(nav => {
+    const loginBtn = nav.querySelector('a[href="login.html"]');
+    const registroBtn = nav.querySelector('a[href="registro.html"]');
+    if (!loginBtn || !registroBtn) return;
+
+    loginBtn.textContent = `Hola, ${user.nombre}`;
+    loginBtn.href = "mis-compras.html";
+
+    registroBtn.textContent = "Cerrar sesión";
+    registroBtn.href = "#";
+    registroBtn.classList.remove("btn-primary");
+    registroBtn.classList.add("btn-outline");
+    registroBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("currentUser");
+      location.href = "index.html";
+    });
+  });
+}
+
+>>>>>>> master
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
   renderCarritoPagina();
   bindConfirmarPedido();
+<<<<<<< HEAD
+=======
+  actualizarNavSesion();
+>>>>>>> master
 
   const formContacto = document.getElementById("form-contacto");
   if (formContacto) {

@@ -34,7 +34,11 @@ function initUsuariosSemilla() {
         const completados = [...lista];
         if (!existeAdmin) {
           completados.push({
+<<<<<<< HEAD
             run: "19011022K", nombre: "jose", apellidos: "Figueroa", correo: "admin@gmail.com",
+=======
+            run: "162781642", nombre: "Jose", apellidos: "Admin", correo: "admin@gmail.com",
+>>>>>>> master
             fechaNacimiento: "1980-01-01", tipoUsuario: "Administrador", region: "Región Metropolitana",
             comuna: "Santiago", direccion: "Av. Central 123", password: "1234", codigoPromo: ""
           });

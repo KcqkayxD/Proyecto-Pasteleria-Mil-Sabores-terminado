@@ -1,7 +1,11 @@
 :root {
   --fondo: #FFF5E1;
   --rosa: #FFC0CB;
+<<<<<<< HEAD
   --chocolate: #8d4613;
+=======
+  --chocolate: #8B4513;
+>>>>>>> master
   --texto: #5D4037;
   --texto-sec: #B0BEC5;
   --verde: #2e7d32;
@@ -235,6 +239,21 @@ input:focus, select:focus, textarea:focus {
 }
 .carrito-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
 
+<<<<<<< HEAD
+=======
+.pedido-card { margin-bottom: 1rem; }
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-bottom: .5rem;
+}
+.pedido-items { margin: 0 0 .8rem; padding-left: 1.1rem; }
+.pedido-items li { margin: .15rem 0; }
+
+>>>>>>> master
 .summary-line {
   display: flex;
   justify-content: space-between;

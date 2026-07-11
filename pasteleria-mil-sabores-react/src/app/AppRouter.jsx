@@ -9,6 +9,10 @@ import ProductoDetalle from '../pages/public/ProductoDetalle';
 import Categorias from '../pages/public/Categorias';
 import Ofertas from '../pages/public/Ofertas';
 import Carrito from '../pages/public/Carrito';
+<<<<<<< HEAD
+=======
+import MisCompras from '../pages/public/MisCompras';
+>>>>>>> master
 import Checkout from '../pages/public/Checkout';
 import PagoExitoso from '../pages/public/PagoExitoso';
 import PagoError from '../pages/public/PagoError';
@@ -38,6 +42,17 @@ export default function AppRouter() {
         <Route path="/categorias" element={<Categorias />} />
         <Route path="/ofertas" element={<Ofertas />} />
         <Route path="/carrito" element={<Carrito />} />
+<<<<<<< HEAD
+=======
+        <Route
+          path="/mis-compras"
+          element={
+            <PrivateRoute>
+              <MisCompras />
+            </PrivateRoute>
+          }
+        />
+>>>>>>> master
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/pago/exitoso" element={<PagoExitoso />} />
         <Route path="/pago/error" element={<PagoError />} />
