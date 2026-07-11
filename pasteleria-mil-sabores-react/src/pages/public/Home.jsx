@@ -38,7 +38,7 @@ export default function Home() {
       <section>
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h2>Productos destacados</h2>
-          <Link to="/productos" className="link-primary">
+          <Link to="/productos" className="link-brand">
             Ver todos
           </Link>
         </div>

@@ -25,12 +25,14 @@ a:hover {
   color: var(--rosa);
 }
 
-.link-primary {
+.link-brand {
   color: var(--chocolate) !important;
+  text-decoration-color: var(--chocolate) !important;
 }
 
-.link-primary:hover {
+.link-brand:hover {
   color: var(--rosa) !important;
+  text-decoration-color: var(--rosa) !important;
 }
 
 h1, h2, h3, .brand-logo {
