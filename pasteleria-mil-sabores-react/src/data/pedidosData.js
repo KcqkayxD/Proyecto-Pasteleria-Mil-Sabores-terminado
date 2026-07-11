@@ -17,6 +17,13 @@ export function getPedidoById(numero) {
   return getPedidos().find((p) => p.numero === numero) || null;
 }
 
+export function getPedidosPorCorreo(correo) {
+  if (!correo) return [];
+  return getPedidos()
+    .filter((p) => p.cliente?.correo?.toLowerCase() === correo.toLowerCase())
+    .sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+}
+
 export function crearPedido({ items, total, cliente }) {
   const pedidos = getPedidos();
   const numero = String(Math.floor(1000 + Math.random() * 9000));

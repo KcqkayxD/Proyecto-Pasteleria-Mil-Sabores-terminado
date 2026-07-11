@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import { getCategorias } from '../../data/categoriasData';
-import { getProductosByCategoria } from '../../data/productosData';
+import { getProductos, getProductosByCategoria } from '../../data/productosData';
 import ProductCard from '../../components/ProductCard';
 import useCart from '../../hooks/useCart';
+
+const TODAS = 'Todas las categorías';
 
 export default function Categorias() {
   const { agregarProducto } = useCart();
   const categorias = getCategorias();
-  const [seleccionada, setSeleccionada] = useState(categorias[0] || '');
+  const [seleccionada, setSeleccionada] = useState(TODAS);
 
-  const productos = seleccionada ? getProductosByCategoria(seleccionada) : [];
+  const productos = seleccionada === TODAS ? getProductos() : getProductosByCategoria(seleccionada);
 
   const handleAgregar = (producto) => {
     agregarProducto(producto, 1, '');
@@ -21,6 +23,13 @@ export default function Categorias() {
       <h1 className="mb-4">Categorías</h1>
 
       <div className="d-flex flex-wrap gap-2 mb-4">
+        <button
+          type="button"
+          className={`btn btn-sm ${seleccionada === TODAS ? 'btn-primary' : 'btn-outline-secondary'}`}
+          onClick={() => setSeleccionada(TODAS)}
+        >
+          {TODAS}
+        </button>
         {categorias.map((cat) => (
           <button
             key={cat}

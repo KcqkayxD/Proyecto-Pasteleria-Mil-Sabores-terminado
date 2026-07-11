@@ -235,6 +235,18 @@ input:focus, select:focus, textarea:focus {
 }
 .carrito-item img { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; }
 
+.pedido-card { margin-bottom: 1rem; }
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: .6rem;
+  flex-wrap: wrap;
+  margin-bottom: .5rem;
+}
+.pedido-items { margin: 0 0 .8rem; padding-left: 1.1rem; }
+.pedido-items li { margin: .15rem 0; }
+
 .summary-line {
   display: flex;
   justify-content: space-between;

@@ -41,7 +41,7 @@ export function calcularDescuentos(subtotal, usuario) {
     mensajes.push('Descuento código FELICES50 aplicado (10%).');
   }
 
-  if (usuario?.correo?.toLowerCase().endsWith('@duocuc.cl')) {
+  if (usuario?.correo?.toLowerCase().endsWith('@inacap.cl')) {
     mensajes.push('Beneficio especial: torta gratis en tu cumpleaños.');
   }
 

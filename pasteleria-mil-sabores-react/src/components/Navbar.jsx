@@ -87,6 +87,9 @@ export default function Navbar() {
                   {usuario?.nombre}
                 </button>
                 <ul className="dropdown-menu dropdown-menu-end">
+                  <li>
+                    <Link className="dropdown-item" to="/mis-compras">Mis compras</Link>
+                  </li>
                   {esAdminOVendedor && (
                     <li>
                       <Link className="dropdown-item" to="/admin">Panel admin</Link>
